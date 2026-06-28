@@ -51,6 +51,11 @@ The build will result in the following files:
 `all/build/cdroms/jnode-x86-lite.iso`         bootable CD image  
 `all/build/cdroms/jnode-x86-lite.iso.vmx`     VMWare configuration file  
 
+
+## JavaFX desktop
+
+JNode's desktop plugin now defaults to `org.jnode.desktop.javafx.JavaFxDesktop`, a JavaFX-backed shell embedded in the existing JNode AWT context. The JavaFX desktop uses reflection so the GUI sub-project can still be compiled in environments where JavaFX is not available; if the JavaFX runtime cannot be loaded, it falls back to the classic Swing desktop. The build source and target levels are set to Java 8 to match the first Java release with an integrated JavaFX runtime.
+
 ## Running
 
 *On VMWare*: Open `all/build/cdroms/jnode-x86-lite.iso.vmx` and click Start.  

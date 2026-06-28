@@ -43,11 +43,22 @@ jobs:
               print(path + ': ok')
           PY
 
+      - name: Seed class library artifacts
+        run: |
+          set -eux
+          rt_jar="$JAVA_HOME/jre/lib/rt.jar"
+          src_zip="$JAVA_HOME/src.zip"
+          test -f "$rt_jar"
+          test -f "$src_zip"
+          cp "$rt_jar" all/lib/classlib.jar
+          cp "$src_zip" all/lib/classlib-src.jar
+          touch all/lib/classlib.jar all/lib/classlib-src.jar
+
       - name: Assemble JNode
-        run: ./build.sh assemble
+        run: ./build.sh -Djnode.local.classlib=true assemble
 
       - name: Build x86 lite ISO
-        run: ./build.sh cd-x86-lite
+        run: ./build.sh -Djnode.local.classlib=true cd-x86-lite
 
       - name: Upload ISO artifacts
         if: always()

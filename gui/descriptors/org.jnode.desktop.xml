@@ -37,6 +37,7 @@
     <library name="jnode-gui.jar">
       <export name="org.jnode.desktop.*"/>
       <export name="org.jnode.desktop.classic.*"/>
+      <export name="org.jnode.desktop.javafx.*"/>
     </library>
     
     <library name="jnode-images.jar">
